@@ -29,15 +29,11 @@ if(isset($_GET['id'])){
     $faculte_id_value = $departement['faculte_id'];
   }
   if($_GET['action'] == "delete"){
-    executeQuery("DELETE FROM departement WHERE id =". $id);
-    
+    executeQuery("DELETE FROM departement WHERE id =". $id); 
   }
 }
-
 $facultes = selectAll("faculte");
-
 $departements = selectAll("departement");
-
   include "include/header.php";
 ?>
 <div>
@@ -51,11 +47,13 @@ $departements = selectAll("departement");
       <label for="">FACULTE</label>
       <select name="faculte_id"> 
         <option value="">...</option>
-
         <?php foreach($facultes as $val): ?>
           <option value="<?= $val['id'] ?>" <?php if(isset($faculte_id_value) and $faculte_id_value == $val['id']) :?> selected  <?php endif ?>> <?= $val['name'] ?></option>
         <?php endforeach; ?>
       </select>
+      <label for=""></label>
+      <label for=""></label>
+      <label for=""></label>
 
       <?php if(isset($departement_id)): ?>
       <input type="submit" name="update" value="Modifier">

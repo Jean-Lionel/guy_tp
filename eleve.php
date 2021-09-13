@@ -69,6 +69,8 @@ $classes = selectAll("classe");
         <?php endforeach; ?>
       </select>
 
+      <label for=""></label>
+
       <?php if(isset($eleve_id)): ?>
       <input type="submit" name="update" value="Modifier">
     <?php else: ?>

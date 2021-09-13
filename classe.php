@@ -47,7 +47,6 @@ $classes = selectAll("classe");
   <form action="" method="post">
     <div>
       <input type="hidden" name="id" value="<?= $classe_id??"" ?>">
-
       <label for="">NOM DE LA CLASSE</label>
       <input type="text" name="name"  value="<?= $classe_name ?? "" ?>"  required="">
       <label for="">FACULTE | DEPARTEMENT</label>
