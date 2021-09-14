@@ -23,3 +23,20 @@ form div{
 	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 10px;
 }
+
+.student_room{
+	display: grid;
+	grid-template-columns: repeat(6,1fr);
+	grid-gap: 20px;
+	background-color: antiquewhite;
+}
+
+.item_eleve{
+	margin-top: 5px;
+	border-left: 2px solid green;
+	padding-left: 5px;
+}
+.btn_presence{
+	display: flex;
+	justify-content: space-between;
+}

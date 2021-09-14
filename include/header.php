@@ -11,6 +11,7 @@
 	<div> 
 		<nav>
 			<ul>
+				<li> <a href="presence.php">PRESENCE</a> </li>
 				<li> <a href="eleve.php">ELEVE</a> </li>
 				<li> <a href="faculte.php">FACULTE</a> </li>
 				<li> <a href="classe.php">CLASSE</a> </li>

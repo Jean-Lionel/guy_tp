@@ -29,7 +29,12 @@ function selectById($table='articles', $id,$column = 'id'){
 
 	$data = $db->query($query);
 	return $data->fetchAll()[0] ?? null;
+}
 
+function customerSelect($query){
+	$db = getConnection();
+	$data = $db->query($query);
+	return $data->fetchAll() ?? null;
 }
 
 function executeQuery($sql){
