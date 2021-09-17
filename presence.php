@@ -9,7 +9,7 @@ $departements = selectAll("departement");
 $facultes = selectAll("faculte");
 $classes = selectAll("classe");
 
-$eleves = customerSelect("SELECT * FROM eleve WHERE classe_id=". $class_id);
+$eleves = customerSelect("SELECT * FROM eleve WHERE classe_id=". $class_id );
 
 include "include/header.php";
 ?>

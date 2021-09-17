@@ -40,3 +40,49 @@ form div{
 	display: flex;
 	justify-content: space-between;
 }
+
+/*LOGIN FORM */
+
+.login_form{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100vh;
+	background: #1bc;
+}
+
+.login_form form{
+	width: 100vh;
+}
+.login_form form div{
+	margin: 10px;
+}
+
+input[type="submit"]{
+	cursor: pointer;
+}
+.login_form form label{
+	width: 200px;
+}
+
+/*@media screen and(max-width: 1250px){
+	.login_form form label{
+			width: 100%;
+			display: block;
+	}
+}*/
+
+@media  screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+
+  .login_form form label, .login_form form input{
+		display: block;
+		width: 200px;
+	}
+	form div{
+		display: block;
+	}
+}

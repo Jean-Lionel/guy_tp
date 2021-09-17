@@ -6,9 +6,7 @@ $professeur_id;
 if(isset($_POST['save'])){
   if(!empty($_POST['nom']) && !empty($_POST['prenom'])){
     extract($_POST);
-
     $password = sha1($password);
-
     executeQuery("INSERT INTO `professeur`( `nom`,`prenom`,`classe_id`,`login`, `password`) VALUES 
       ('$nom', '$prenom',$classe_id,'$login','$password')");
   }
