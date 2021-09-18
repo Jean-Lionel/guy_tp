@@ -86,3 +86,15 @@ input[type="submit"]{
 		display: block;
 	}
 }
+
+.present{
+	background-color: green;
+	text-align: center;
+	color: white;
+}
+
+.abscent{
+	background-color: red;
+	text-align: center;
+	color: white;
+}

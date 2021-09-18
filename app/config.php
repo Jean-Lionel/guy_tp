@@ -37,9 +37,32 @@ function customerSelect($query){
 	return $data->fetchAll() ?? null;
 }
 
+function startSingleSession(){
+	if (session_status() == PHP_SESSION_NONE) { session_start(); 
+		
+	}
+	if(!isset($_SESSION['user'])){
+
+	}
+	//dump($_SESSION["user"]);
+}
+
 function executeQuery($sql){
 	$db = getConnection();
 	return $db->exec($sql);
+}
+
+function checkStudentIsCalled($student_id){
+	$query = "SELECT * FROM presences WHERE eleve_id = $student_id and MONTH(NOW()) = MONTH(`present_time`) AND YEAR(NOW()) = YEAR(`present_time`) AND DAY(NOW()) = DAY(`present_time`)";
+
+	$result = customerSelect($query);
+
+	if(count($result) > 0){
+		return ["is_present"=> $result[0]['is_present']];
+	}else{
+		return false;
+	}
+
 }
 
 function dump($value = ""){
@@ -53,3 +76,4 @@ function getEntryInTable($table ,  $val,$column="id"){
 	return $table[$key];
 }
 
+startSingleSession();

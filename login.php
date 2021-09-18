@@ -1,3 +1,25 @@
+<?php
+require_once "include/require.php"; 
+if (isset($_POST['connect'])) {
+	// code...
+	extract($_POST);
+	$password = sha1($_POST['password']);
+	$login = $_POST['login'];
+
+	$sql = "SELECT * FROM professeur WHERE login= '$login'  AND password='$password'";
+	$result = customerSelect($sql);
+
+	if(count($result) > 0){
+		//dump();
+		$_SESSION["user"] = $result[0];
+	}
+}
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
