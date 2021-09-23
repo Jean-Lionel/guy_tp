@@ -12,6 +12,7 @@ if(isset($_GET['is_absente'])){
 }
 if(isset($_GET['is_present'])){
   $is_present = $_GET['is_present'];
+   $professeur_id = $_SESSION['user']['id'] ?? 0;
 
     $sql = "INSERT INTO `presences`(`eleve_id`, `professeur_id`, `present_time`,is_present) VALUES 
   ($is_present ,$professeur_id,now(),1)";
