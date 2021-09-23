@@ -7,8 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="asset/css/style.css">
 </head>
 <body>
-
-	<div> 
+	<div class="container"> 
 		<nav>
 			<ul>
 				<li> <a href="presence.php">PRESENCE</a> </li>
@@ -17,6 +16,8 @@
 				<li> <a href="classe.php">CLASSE</a> </li>
 				<li> <a href="professeur.php">PROFESSEUR</a> </li>
 				<li> <a href="departement.php">DEPARTEMENT</a> </li>
+				<li> <a href="logout.php">DECONNECTION</a> </li>
 			</ul>
 		</nav>
 
+		<div class="content">

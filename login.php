@@ -42,7 +42,7 @@ if (isset($_POST['connect'])) {
 			</div>
 			<div>
 				<label for="">MOT DE PASSE</label>
-				<input type="text" name="password" required>
+				<input type="password" name="password" required>
 			</div>
 			<div>
 				<label for=""></label>
