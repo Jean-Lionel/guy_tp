@@ -38,13 +38,15 @@ function customerSelect($query){
 }
 
 function startSingleSession(){
-	if (session_status() == PHP_SESSION_NONE) { session_start(); 
-		
+	if (session_status() == PHP_SESSION_NONE) { 
+		session_start(); 
 	}
+	
 	if(!isset($_SESSION['user'])){
-
+		header("location: login.php");
+		exit;
 	}
-	//dump($_SESSION["user"]);
+
 }
 
 function executeQuery($sql){
@@ -76,4 +78,3 @@ function getEntryInTable($table ,  $val,$column="id"){
 	return $table[$key];
 }
 
-startSingleSession();

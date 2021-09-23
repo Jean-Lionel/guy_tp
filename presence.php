@@ -1,5 +1,7 @@
 <?php 
 require_once "include/require.php";
+startSingleSession();
+
 $class_id = isset($_GET['class_id']) ? $_GET['class_id'] : 0 ;
 
 if(isset($_GET['is_absente'])){

@@ -1,5 +1,6 @@
 <?php 
 require_once "include/require.php";
+startSingleSession();
 
 $eleve_name;
 $eleve_id;

@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "include/require.php"; 
 if (isset($_POST['connect'])) {
 	// code...
@@ -9,15 +10,18 @@ if (isset($_POST['connect'])) {
 	$sql = "SELECT * FROM professeur WHERE login= '$login'  AND password='$password'";
 	$result = customerSelect($sql);
 
+
 	if(count($result) > 0){
 		//dump();
-		$_SESSION["user"] = $result[0];
+	
+		$_SESSION['user'] = $result[0];
+
+		header("location: index.php");
+		exit;
 	}
 }
 
 ?>
-
-
 
 
 <!DOCTYPE html>

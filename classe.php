@@ -1,6 +1,8 @@
 <?php 
 require_once "include/require.php";
 
+startSingleSession();
+
 $classe_name;
 $classe_id;
 if(isset($_POST['save'])){

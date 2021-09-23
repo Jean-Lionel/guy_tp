@@ -1,5 +1,6 @@
 <?php 
 require_once "include/require.php";
+startSingleSession();
 
 $faculte_name;
 $faculte_id;

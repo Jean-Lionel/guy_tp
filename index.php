@@ -1,5 +1,10 @@
 <?php 
-  include "include/header.php";
+require_once "include/require.php";
+
+startSingleSession();
+
+
+include "include/header.php";
 ?>
 
 
