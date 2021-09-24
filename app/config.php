@@ -77,4 +77,3 @@ function getEntryInTable($table ,  $val,$column="id"){
 	$key = array_search($val, array_column($table, $column));
 	return $table[$key];
 }
-

@@ -81,7 +81,11 @@ $departements = selectAll("departement");
         <tr>
           <td><?= ++$key  ?></td>
           <td><?= $value['id'] ?></td>
-          <td><?= getEntryInTable($facultes, $value['id'])['name'] ?></td>
+          <td>
+            <?= 
+              selectById('faculte', $value['faculte_id'])['name']
+           ?>
+           </td>
           <td><?= $value['name'] ?></td>
           <td>
             <a href="departement.php?action=modifier&&id=<?= $value['id'] ?>">Modifier</a>
