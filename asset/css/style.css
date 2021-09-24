@@ -115,3 +115,12 @@ input[type="submit"]{
 	text-align: center;
 	color: white;
 }
+
+.connected{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: 5px;
+	background-color: #19b;
+
+}
