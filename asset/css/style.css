@@ -116,6 +116,12 @@ input[type="submit"]{
 	color: white;
 }
 
+@media print{
+	.no_printable{
+		display: none;
+	}
+}
+
 .connected{
 	position: fixed;
 	bottom: 0;
@@ -123,4 +129,11 @@ input[type="submit"]{
 	padding: 5px;
 	background-color: #19b;
 
+}
+
+.table{
+	border-collapse: collapse;
+}
+th, td, tr, th{
+	border: 1px solid black;
 }
