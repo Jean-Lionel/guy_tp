@@ -55,11 +55,8 @@ $classes = selectAll("classe");
       <select name="departement_id"> 
         <option value="">...</option>
 
-        <?php foreach($departements as $val): ?>
-          <option value="<?= $val['id'] ?>" <?php if(isset($departement_id_value) and $departement_id_value == $val['id']) :?> selected  <?php endif ?>> 
-            <?= getEntryInTable($facultes, $val['id'])['name'] ?> |
-            <?= $val['name'] ?>
-          </option>
+        <?php foreach($facultes as $val): ?>
+          <option value="<?= $val['id'] ?>"> <?= $val['name'] ?></option>
         <?php endforeach; ?>
       </select>
 
@@ -88,7 +85,9 @@ $classes = selectAll("classe");
         <tr>
           <td><?= ++$key  ?></td>
           <td><?= $value['id'] ?></td>
-          <td><?= getEntryInTable($departements, $value['id'])['name'] ?></td>
+
+          <td><?= getEntryInTable($facultes, $value['departement_id'])['name'] ?></td>
+
           <td><?= $value['name'] ?></td>
           <td>
             <a href="classe.php?action=modifier&&id=<?= $value['id'] ?>">Modifier</a>
