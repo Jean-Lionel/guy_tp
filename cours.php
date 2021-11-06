@@ -53,7 +53,7 @@ $cours = selectAll("cours");
       <label for="">NOM DU COURS </label>
       <input type="text" name="nom"  value="<?= $eleve_name ?? "" ?>"  required=""> 
       
-      <label for="">FACULTE | DEPARTEMENT | CLASSE</label>
+      <label for="">DEPARTEMENT | FACULTE | CLASSE</label>
       <select name="classe_id" required> 
         <option value="">...</option>
 

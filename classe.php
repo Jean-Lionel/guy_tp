@@ -51,11 +51,11 @@ $classes = selectAll("classe");
       <input type="hidden" name="id" value="<?= $classe_id??"" ?>">
       <label for="">NOM DE LA CLASSE</label>
       <input type="text" name="name"  value="<?= $classe_name ?? "" ?>"  required="">
-      <label for="">FACULTE | DEPARTEMENT</label>
+      <label for="">FACULTE </label>
       <select name="departement_id"> 
         <option value="">...</option>
 
-        <?php foreach($facultes as $val): ?>
+        <?php foreach($departements as $val): ?>
           <option value="<?= $val['id'] ?>"> <?= $val['name'] ?></option>
         <?php endforeach; ?>
       </select>
@@ -86,7 +86,7 @@ $classes = selectAll("classe");
           <td><?= ++$key  ?></td>
           <td><?= $value['id'] ?></td>
 
-          <td><?= getEntryInTable($facultes, $value['departement_id'])['name'] ?></td>
+          <td><?= getEntryInTable($departements, $value['departement_id'])['name'] ?></td>
 
           <td><?= $value['name'] ?></td>
           <td>

@@ -3,7 +3,7 @@
 function getConnection(){
 
 	try{
-		$db = new PDO('mysql:host=localhost;dbname=guy_tp','jean','lion');
+		$db = new PDO('mysql:host=localhost;dbname=guy_tp_2','jean','lion');
 		 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		 //echo "SUCCES CONNECTED";
 	} catch(PDOException $e) {
@@ -42,10 +42,10 @@ function startSingleSession(){
 		session_start(); 
 	}
 	
-	if(!isset($_SESSION['user'])){
-		header("location: login.php");
-		exit;
-	}
+	// if(!isset($_SESSION['user'])){
+	// 	header("location: login.php");
+	// 	exit;
+	// }
 
 }
 
