@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Sam 06 Novembre 2021 à 08:15
+-- Généré le :  Dim 07 Novembre 2021 à 05:09
 -- Version du serveur :  5.7.36-0ubuntu0.18.04.1
 -- Version de PHP :  7.4.25
 
@@ -37,8 +37,7 @@ CREATE TABLE `classe` (
 --
 
 INSERT INTO `classe` (`id`, `departement_id`, `name`) VALUES
-(1, 1, 'BAC I'),
-(2, 1, '1 ere SC');
+(1, 1, 'BAC I');
 
 -- --------------------------------------------------------
 
@@ -59,7 +58,7 @@ CREATE TABLE `cours` (
 --
 
 INSERT INTO `cours` (`id`, `name`, `professeur_id`, `classe_id`, `created_at`) VALUES
-(1, 'ANGLAIS', 1, 1, '2021-11-06 06:12:29');
+(1, 'C PROGRAMMING', 1, 1, '2021-11-07 02:55:54');
 
 -- --------------------------------------------------------
 
@@ -79,9 +78,11 @@ CREATE TABLE `departement` (
 --
 
 INSERT INTO `departement` (`id`, `faculte_id`, `name`, `created_at`) VALUES
-(1, 1, 'SCHOOL OF ENGINERING', '2021-11-06 07:31:01'),
-(2, 1, 'SCHOOL OF DEVELLOPMENT', '2021-11-06 07:31:33'),
-(3, 1, 'A', '2021-11-06 08:01:36');
+(1, 1, ' IT', '2021-11-07 04:47:15'),
+(2, 1, 'Architecture', '2021-11-07 04:47:33'),
+(3, 2, 'Monitoring and Evaluation', '2021-11-07 04:48:08'),
+(4, 2, 'hospitalisation', '2021-11-07 04:48:26'),
+(5, 2, 'Enterpreneurship', '2021-11-07 04:48:46');
 
 -- --------------------------------------------------------
 
@@ -114,8 +115,8 @@ CREATE TABLE `faculte` (
 --
 
 INSERT INTO `faculte` (`id`, `name`, `created_at`) VALUES
-(1, 'IT', '2021-11-06 07:30:19'),
-(2, 'ARCHITECTURE', '2021-11-06 07:30:28');
+(1, 'School of Engeneering', '2021-11-07 04:45:40'),
+(2, ' School of Development', '2021-11-07 04:46:43');
 
 -- --------------------------------------------------------
 
@@ -131,6 +132,13 @@ CREATE TABLE `presences` (
   `present_time` datetime NOT NULL,
   `is_present` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `presences`
+--
+
+INSERT INTO `presences` (`id`, `eleve_id`, `professeur_id`, `cours_id`, `present_time`, `is_present`) VALUES
+(1, 1, 1, 1, '2021-11-06 12:43:38', 1);
 
 -- --------------------------------------------------------
 
@@ -208,7 +216,7 @@ ALTER TABLE `professeur`
 -- AUTO_INCREMENT pour la table `classe`
 --
 ALTER TABLE `classe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `cours`
 --
@@ -218,7 +226,7 @@ ALTER TABLE `cours`
 -- AUTO_INCREMENT pour la table `departement`
 --
 ALTER TABLE `departement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `eleve`
 --
@@ -233,7 +241,7 @@ ALTER TABLE `faculte`
 -- AUTO_INCREMENT pour la table `presences`
 --
 ALTER TABLE `presences`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `professeur`
 --
