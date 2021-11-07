@@ -71,8 +71,8 @@ $departements = selectAll("departement");
         <tr>
           <th># </th>
           <th>NUMERO </th>
+           <th>FACULTE</th>
           <th> DEPARTEMENT</th>
-          <th>FACULTE</th>
           <th>ACTION</th>
         </tr>
       </thead>
@@ -81,12 +81,13 @@ $departements = selectAll("departement");
         <tr>
           <td><?= ++$key  ?></td>
           <td><?= $value['id'] ?></td>
+          <td><?= $value['name'] ?></td>
           <td>
             <?= 
               selectById('faculte', $value['faculte_id'])['name']
            ?>
            </td>
-          <td><?= $value['name'] ?></td>
+          
           <td>
             <a href="departement.php?action=modifier&&id=<?= $value['id'] ?>">Modifier</a>
             <a href="departement.php?action=delete&&id=<?= $value['id'] ?>" onclick="return confirm('êtes-vous sûr ?')">Supprimer</a>
