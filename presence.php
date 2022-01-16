@@ -32,6 +32,7 @@ $cours = [];
 
 if(isset($class_id) && $class_id){
   $cours = customerSelect("SELECT * FROM cours WHERE classe_id=". $class_id .' AND professeur_id='. $_SESSION['user']['id']);
+ 
 }
 
 if(isset($class_id) && $class_id && $cours_id){
