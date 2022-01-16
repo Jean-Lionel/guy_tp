@@ -28,7 +28,6 @@ if($date_presence && $class_id && $cours_id){
     professeur_id=". $_SESSION['user']['id'] . " AND cours_id=". $cours_id. " AND present_time LIKE '$date_presence%'");
 }
 
-
 include "include/header.php";
 ?>
 
@@ -40,10 +39,7 @@ include "include/header.php";
           <option value="">...</option>
           <?php foreach($classes as $val) : ?>
             <option value="<?= $val['id'] ?>" <?php if(isset($class_id ) and $class_id  == $val['id']) :?> selected  <?php endif ?>> 
-                <?= getEntryInTable($facultes, $val['id'])['name'] ?> |
-                <?php 
-                $fac_id = getEntryInTable($facultes, $val['id'])['id'];
-                echo getEntryInTable($departements, $fac_id)['name'] ?> |
+                 <?= getEntryInTable($facultes, $val['departement_id'])['name'] ?> |
                 <?= $val['name'] ?>
               </option>
           <?php endforeach ?>
@@ -70,7 +66,7 @@ include "include/header.php";
     
     <h4 style="text-align: center;">LISTE DES PRESENCE DU <?= $date_presence ?>
       
-      <button id="print" class="no_printable">Imprimer</button>
+      <button class="btn btn-outline-primary" id="print" class="no_printable">Imprimer</button>
     </h4>
     <table class="rapport">
       <thead>
@@ -84,10 +80,20 @@ include "include/header.php";
         <?php foreach($presences as $key => $el):?>
         <tr>
           <td><?= $el['eleve_id'] ?></td>
-          <td><?php $eleve = getEntryInTable($eleves, $el['eleve_id']);
+          <td><?php 
+          $eleve = NULL;
 
-          echo $eleve['nom'] .' '.$eleve['prenom'];
+          try{
+              $eleve = getEntryInTable($eleves, $el['eleve_id']);
+          }catch(Exception $e){
 
+          }
+
+          
+          if($eleve != NULL){
+            echo $eleve['nom'] .' '.$eleve['prenom'];
+          }
+          
            ?></td>
 
           <td><?= $el['is_present'] ? "P" : "A"  ?></td>

@@ -38,8 +38,6 @@ if(isset($class_id) && $class_id && $cours_id){
   $eleves = customerSelect("SELECT * FROM eleve WHERE classe_id=". $class_id );
 }
 
-
-
 include "include/header.php";
 ?>
 
@@ -51,10 +49,8 @@ include "include/header.php";
           <option value="">...</option>
           <?php foreach($classes as $val) : ?>
             <option value="<?= $val['id'] ?>" <?php if(isset($class_id ) and $class_id  == $val['id']) :?> selected  <?php endif ?>> 
-                <?= getEntryInTable($facultes, $val['id'])['name'] ?> |
-                <?php 
-                $fac_id = getEntryInTable($facultes, $val['id'])['id'];
-                echo getEntryInTable($departements, $fac_id)['name'] ?> |
+
+                <?= getEntryInTable($facultes, $val['departement_id'])['name'] ?> |
                 <?= $val['name'] ?>
               </option>
           <?php endforeach ?>
@@ -85,14 +81,14 @@ include "include/header.php";
         </div>
         <?php $val = checkStudentIsCalled($el['id']); if( $val ) :  ?> 
           <?php if($val['is_present']) : ?>
-            <div class="present">PRESENT</div>
+            <div class="btn btn-primary" class="present">PRESENT</div>
           <?php else: ?>
-            <div class="abscent">ABSENT</div>
+            <div class="btn btn-danger" class="abscent">ABSENT</div>
           <?php endif; ?>
         <?php else : ?>
         <div class="btn_presence">
-            <button onclick="is_absente(<?= $el['id'] ?>)"> ABSCENT </button>
-            <button onclick="is_present(<?= $el['id'] ?>)"> PRESENT </button>
+            <button class="btn btn-outline-danger" onclick="is_absente(<?= $el['id'] ?>)"> ABSCENT </button>
+            <button class="btn btn-outline-primary" onclick="is_present(<?= $el['id'] ?>)"> PRESENT </button>
         </div>
       <?php endif; ?>
       </div>

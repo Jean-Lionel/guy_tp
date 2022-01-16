@@ -55,16 +55,14 @@ $classes = selectAll("classe");
       <input type="text" name="nom"  value="<?= $eleve_name ?? "" ?>"  required=""> 
       <label for="">PRENOM </label>
       <input type="text" name="prenom"  value="<?= $eleve_prenom ?? "" ?>"  required="">
-      <label for="">FACULTE | DEPARTEMENT | CLASSE</label>
+      <label for=""> FACULTE | CLASSE</label>
       <select name="classe_id" required> 
         <option value="">...</option>
 
         <?php foreach($classes as $val): ?>
           <option value="<?= $val['id'] ?>" <?php if(isset($classe_id_value) and $classe_id_value == $val['id']) :?> selected  <?php endif ?>> 
-            <?= getEntryInTable($facultes, $val['id'])['name'] ?> |
-            <?php 
-            $fac_id = getEntryInTable($facultes, $val['id'])['id'];
-            echo getEntryInTable($departements, $fac_id)['name'] ?> |
+            <?= getEntryInTable($facultes, $val['departement_id'])['name'] ?> |
+        
             <?= $val['name'] ?>
           </option>
         <?php endforeach; ?>
@@ -73,9 +71,9 @@ $classes = selectAll("classe");
       <label for=""></label>
 
       <?php if(isset($eleve_id)): ?>
-      <input type="submit" name="update" value="Modifier">
+      <input class="btn btn-outline-info" type="submit" name="update" value="Modifier">
     <?php else: ?>
-       <input type="submit" name="save" value="Enregistrer">
+       <input class="btn btn-outline-primary" type="submit" name="save" value="Enregistrer">
     <?php endif ?>
     </div>
   </form>
@@ -90,7 +88,6 @@ $classes = selectAll("classe");
           <th>NOM</th>
           <th>PRENOM</th>
           <th>CLASSE</th>
-          <th>DEPARTEMENT</th>
           <th>FACULTE</th>
           <th>ACTION</th>
         </tr>
@@ -103,24 +100,21 @@ $classes = selectAll("classe");
           <td><?= $value['nom'] ?></td>
           <td><?= $value['prenom'] ?></td>
           <td>
-            <?= getEntryInTable($classes, $val['id'])['name'] ?>
+            <?= getEntryInTable($classes, $val['classe_id'] ?? 0)['name'] ?>
+      
             
           </td>
-          <td>
-            <?php 
-           $dep_id = getEntryInTable($classes, $val['id'])['departement_id'];
-            echo getEntryInTable($departements, $dep_id)['name'];
-           ?>
+
            </td>
            <td>
             <?php 
-            $fac_id = getEntryInTable($departements, $dep_id)['faculte_id'];
+            $fac_id = getEntryInTable($classes, $val['classe_id'] ?? 0)['departement_id'];
             echo getEntryInTable($facultes, $fac_id)['name'];
            ?> 
            </td>
           <td>
-            <a href="eleve.php?action=modifier&&id=<?= $value['id'] ?>">Modifier</a>
-            <a href="eleve.php?action=delete&&id=<?= $value['id'] ?>" onclick="return confirm('êtes-vous sûr ?')">Supprimer</a>
+            <a class="btn btn-outline-info" href="eleve.php?action=modifier&&id=<?= $value['id'] ?>">Modifier</a>
+            <a class="btn btn-outline-danger" href="eleve.php?action=delete&&id=<?= $value['id'] ?>" onclick="return confirm('êtes-vous sûr ?')">Supprimer</a>
            
           </td>
         </tr>

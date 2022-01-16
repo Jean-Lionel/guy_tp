@@ -7,7 +7,6 @@ $eleve_id;
 if(isset($_POST['save'])){
   if(!empty($_POST['nom'])){
     extract($_POST);
-
     executeQuery("INSERT INTO `cours`(`name`, `professeur_id`, `classe_id`) VALUES('$nom', 
     	$professeur_id,$classe_id)");
   }
@@ -41,7 +40,6 @@ $classes = selectAll("classe");
 $professeurs = selectAll("professeur");
 $cours = selectAll("cours");
 
-
  include "include/header.php";
 ?>
 <div>
@@ -53,16 +51,14 @@ $cours = selectAll("cours");
       <label for="">NOM DU COURS </label>
       <input type="text" name="nom"  value="<?= $eleve_name ?? "" ?>"  required=""> 
       
-      <label for="">DEPARTEMENT | FACULTE | CLASSE</label>
+      <label for="">FACULTE | CLASSE</label>
       <select name="classe_id" required> 
         <option value="">...</option>
 
         <?php foreach($classes as $val): ?>
           <option value="<?= $val['id'] ?>" <?php if(isset($classe_id_value) and $classe_id_value == $val['id']) :?> selected  <?php endif ?>> 
-            <?= getEntryInTable($facultes, $val['id'])['name'] ?> |
             <?php 
-            $fac_id = getEntryInTable($facultes, $val['id'])['id'];
-            echo getEntryInTable($departements, $fac_id)['name'] ?> |
+            echo getEntryInTable($facultes, $val['departement_id'])['name'] ?> |
             <?= $val['name'] ?>
           </option>
         <?php endforeach; ?>
@@ -81,9 +77,9 @@ $cours = selectAll("cours");
       </select>
       <label></label>
       <?php if(isset($eleve_id)): ?>
-      <input type="submit" name="update" value="Modifier">
+      <input class="btn btn-outline-info" type="submit" name="update" value="Modifier">
     <?php else: ?>
-       <input type="submit" name="save" value="Enregistrer">
+       <input class="btn btn-outline-primary" type="submit" name="save" value="Enregistrer">
     <?php endif ?>
     </div>
   </form>
@@ -97,7 +93,7 @@ $cours = selectAll("cours");
           <th>NUMERO </th>
           <th>NOM</th>
           <th>PRENOM</th>
-          <th>CLASSE</th>
+          <th>FACULTE | CLASSE</th>
           
           <th>ACTION</th>
         </tr>
@@ -113,13 +109,15 @@ $cours = selectAll("cours");
           	<?= getEntryInTable($professeurs, $value['professeur_id'])['prenom'] ?>
           </td>
           <td>
+            <?php 
+            echo getEntryInTable($facultes, $value['departement_id'] ?? 0)['name'] ?> |
             <?= getEntryInTable($classes, $value['id'])['name'] ?>
           </td>
          
            </td>
           <td>
             <!-- <a href="cours.php?action=modifier&&id=<?= $value['id'] ?>">Modifier</a> -->
-            <a href="cours.php?action=delete&&id=<?= $value['id'] ?>" onclick="return confirm('êtes-vous sûr ?')">Supprimer</a>
+            <a class="btn btn-outline-danger" href="cours.php?action=delete&&id=<?= $value['id'] ?>" onclick="return confirm('êtes-vous sûr ?')">Supprimer</a>
            
           </td>
         </tr>

@@ -9,6 +9,9 @@ if(isset($_POST['save'])){
   if(!empty($_POST['name'])){
     extract($_POST);
     executeQuery("INSERT INTO `classe`( `name`,`departement_id`) VALUES ('$name',$departement_id)");
+    $classe_name = "";
+    $classe_id = "";
+    $departement_id = "";
   }
 }
 if(isset($_POST['update'])){
@@ -21,6 +24,8 @@ if(isset($_POST['update'])){
     $departement_id = "";
   }
 }
+
+$departement_id_value = 0;
 
 if(isset($_GET['id'])){
   $id = intval($_GET['id']);
@@ -37,11 +42,8 @@ if(isset($_GET['id'])){
 }
 
 $departements = selectAll("departement");
-
 $facultes = selectAll("faculte");
-
 $classes = selectAll("classe");
-
   include "include/header.php";
 ?>
 <div>
@@ -55,15 +57,16 @@ $classes = selectAll("classe");
       <select name="departement_id"> 
         <option value="">...</option>
 
-        <?php foreach($departements as $val): ?>
-          <option value="<?= $val['id'] ?>"> <?= $val['name'] ?></option>
+        <?php foreach($facultes as $val): ?>
+          <option value="<?= $val['id'] ?>" 
+        > <?= $val['name'] ?></option>
         <?php endforeach; ?>
       </select>
 
-      <?php if(isset($classe_id)): ?>
-      <input type="submit" name="update" value="Modifier">
+      <?php if(isset($classe_id) and (intval($classe_id) != 0)): ?>
+      <input class="btn btn-outline-info" type="submit" name="update" value="Modifier">
     <?php else: ?>
-       <input type="submit" name="save" value="Enregistrer">
+       <input class="btn btn-outline-primary" type="submit" name="save" value="Enregistrer">
     <?php endif ?>
     </div>
   </form>
@@ -86,12 +89,12 @@ $classes = selectAll("classe");
           <td><?= ++$key  ?></td>
           <td><?= $value['id'] ?></td>
 
-          <td><?= getEntryInTable($departements, $value['departement_id'])['name'] ?></td>
+          <td><?= getEntryInTable($facultes, $value['departement_id'])['name'] ?></td>
 
           <td><?= $value['name'] ?></td>
           <td>
-            <a href="classe.php?action=modifier&&id=<?= $value['id'] ?>">Modifier</a>
-            <a href="classe.php?action=delete&&id=<?= $value['id'] ?>" onclick="return confirm('êtes-vous sûr ?')">Supprimer</a>
+            <a class="btn btn-outline-info" href="classe.php?action=modifier&&id=<?= $value['id'] ?>">Modifier</a>
+            <a class="btn btn-outline-danger" href="classe.php?action=delete&&id=<?= $value['id'] ?>" onclick="return confirm('êtes-vous sûr ?')">Supprimer</a>
            
           </td>
         </tr>

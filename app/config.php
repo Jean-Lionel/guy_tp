@@ -3,7 +3,8 @@
 function getConnection(){
 
 	try{
-		$db = new PDO('mysql:host=localhost;dbname=guy_tp_2','jean','lion');
+		$db = new PDO('mysql:host=localhost;dbname=guy_tp_2','root','
+			');
 		 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		 //echo "SUCCES CONNECTED";
 	} catch(PDOException $e) {
@@ -16,9 +17,7 @@ function getConnection(){
 
 function selectAll($table){
 	$query = "SELECT * FROM $table";
-
 	$db = getConnection();
-
 	$data = $db->query($query);
 	return $data->fetchAll();
 }
@@ -26,7 +25,6 @@ function selectAll($table){
 function selectById($table='articles', $id,$column = 'id'){
 	$query = "SELECT * FROM $table WHERE $column =$id";
 	$db = getConnection();
-
 	$data = $db->query($query);
 	return $data->fetchAll()[0] ?? null;
 }
@@ -42,10 +40,10 @@ function startSingleSession(){
 		session_start(); 
 	}
 	
-	if(!isset($_SESSION['user'])){
-		header("location: login.php");
-		exit;
-	}
+	// if(!isset($_SESSION['user'])){
+	// 	header("location: login.php");
+	// 	exit;
+	// }
 
 }
 
@@ -75,5 +73,6 @@ function dump($value = ""){
 
 function getEntryInTable($table ,  $val,$column="id"){
 	$key = array_search($val, array_column($table, $column));
-	return $table[$key];
+
+	return $table[$key] ?? NULL;
 }
