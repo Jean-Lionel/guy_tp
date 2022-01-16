@@ -89,7 +89,7 @@ $classes = selectAll("classe");
           <td><?= ++$key  ?></td>
           <td><?= $value['id'] ?></td>
 
-          <td><?= getEntryInTable($facultes, $value['departement_id'])['name'] ?></td>
+          <td><?= getEntryInTable($facultes, $value['faculte_id'])['name'] ?></td>
 
           <td><?= $value['name'] ?></td>
           <td>
