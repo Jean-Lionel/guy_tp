@@ -7,6 +7,7 @@ $professeur_id;
 if(isset($_POST['save'])){
   if(!empty($_POST['nom']) && !empty($_POST['prenom'])){
     extract($_POST);
+   
     $password = sha1($password);
     executeQuery("INSERT INTO `professeur`( `nom`,`prenom`,`classe_id`,`login`, `password`) VALUES 
       ('$nom', '$prenom',$classe_id,'$login','$password')");
@@ -61,7 +62,23 @@ include "include/header.php";
       <label for="">PASSWORD</label>
       <input type="password" name="password"  value=""  required="">
       <label for=""> FACULTE | CLASSE</label>
-      <select name="classe_id" required> 
+
+      <select name="classe_id" id="classe_id">
+        <option value=""></option>
+
+        <?php foreach($classes as $classe) :?>
+          <option value="<?= $classe['id'] ?>"> 
+        
+          <?php 
+            $dep = selectById('faculte',$classe['faculte_id']);
+
+            echo($dep['name'] .' | '. $classe['name']);
+           ?>
+
+           </option>
+        <?php endforeach; ?>
+      </select>
+     <!--  <select name="classe_id" required> 
         <option value="">...</option>
 
         <?php foreach($classes as $val): ?>
@@ -73,7 +90,7 @@ include "include/header.php";
             <?= $val['name'] ?>
           </option>
         <?php endforeach; ?>
-      </select>
+      </select> -->
       <label></label>
 
       <?php if(isset($professeur_id)): ?>
@@ -107,13 +124,18 @@ include "include/header.php";
           <td><?= $value['nom'] ?></td>
           <td><?= $value['prenom'] ?></td>
           <td>
-            <?= getEntryInTable($classes, $val['classe_id'] ?? 0)['name'] ?>
+            <?php
+            $cl = selectById('classe', $value['classe_id']);
+             echo($cl['name'] ?? '');
+             ?>
             
           </td>
           <td>
             <?php 
-           $fac_id = getEntryInTable($classes, $val['classe_id'] ?? 0)['departement_id'];
-            echo getEntryInTable($facultes, $fac_id)['name'];
+            $fac_id = $cl['faculte_id'] ?? 0;
+
+             $fac = selectById('faculte', $fac_id);
+             echo($fac['name'] ?? '');
            ?>
            </td>
            
