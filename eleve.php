@@ -7,7 +7,6 @@ $eleve_id;
 if(isset($_POST['save'])){
   if(!empty($_POST['nom']) && !empty($_POST['prenom'])){
     extract($_POST);
-
     executeQuery("INSERT INTO `eleve`( `nom`,`prenom`,`classe_id`) VALUES 
       ('$nom', '$prenom',$classe_id)");
   }
@@ -61,7 +60,7 @@ $classes = selectAll("classe");
 
         <?php foreach($classes as $val): ?>
           <option value="<?= $val['id'] ?>" <?php if(isset($classe_id_value) and $classe_id_value == $val['id']) :?> selected  <?php endif ?>> 
-            <?= getEntryInTable($facultes, $val['departement_id'])['name'] ?> |
+            <?= getEntryInTable($facultes, $val['faculte_id'])['name'] ?> |
         
             <?= $val['name'] ?>
           </option>
@@ -100,16 +99,19 @@ $classes = selectAll("classe");
           <td><?= $value['nom'] ?></td>
           <td><?= $value['prenom'] ?></td>
           <td>
-            <?= getEntryInTable($classes, $val['classe_id'] ?? 0)['name'] ?>
-      
-            
-          </td>
+            <?php
+              
+              $cl = selectById('classe', $value['classe_id']);
+              $fac = selectById('faculte', $cl['faculte_id']);
 
+              echo( ($cl['name'] ?? ''));
+             ?>
+          </td>
            </td>
            <td>
             <?php 
-            $fac_id = getEntryInTable($classes, $val['classe_id'] ?? 0)['departement_id'];
-            echo getEntryInTable($facultes, $fac_id)['name'];
+           
+            echo($fac['name']);
            ?> 
            </td>
           <td>
