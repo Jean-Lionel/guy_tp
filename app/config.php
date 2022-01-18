@@ -4,7 +4,7 @@ function getConnection(){
 
 	try{
 		$db = new 
-		PDO('mysql:host=localhost;dbname=guy_tp_2','root','');
+		PDO('mysql:host=localhost;dbname=kessy','root','');
 		 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		 //echo "SUCCES CONNECTED";
 	} catch(PDOException $e) {

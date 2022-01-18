@@ -60,7 +60,7 @@ $classes = selectAll("classe");
 
         <?php foreach($classes as $val): ?>
           <option value="<?= $val['id'] ?>" <?php if(isset($classe_id_value) and $classe_id_value == $val['id']) :?> selected  <?php endif ?>> 
-            <?= getEntryInTable($facultes, $val['faculte_id'])['name'] ?> |
+            <?= getEntryInTable($facultes, $val['departement_id'])['name'] ?> |
         
             <?= $val['name'] ?>
           </option>
@@ -102,7 +102,7 @@ $classes = selectAll("classe");
             <?php
               
               $cl = selectById('classe', $value['classe_id']);
-              $fac = selectById('faculte', $cl['faculte_id']);
+              $fac = selectById('faculte', $cl['departement_id']);
 
               echo( ($cl['name'] ?? ''));
              ?>

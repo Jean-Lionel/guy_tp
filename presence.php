@@ -51,7 +51,7 @@ include "include/header.php";
           <?php foreach($classes as $val) : ?>
             <option value="<?= $val['id'] ?>" <?php if(isset($class_id ) and $class_id  == $val['id']) :?> selected  <?php endif ?>> 
 
-                <?= getEntryInTable($facultes, $val['faculte_id'])['name'] ?> |
+                <?= getEntryInTable($facultes, $val['departement_id'])['name'] ?> |
                 <?= $val['name'] ?>
               </option>
           <?php endforeach ?>
@@ -67,8 +67,6 @@ include "include/header.php";
               </option>
           <?php endforeach ?>
         </select>
-         <label for="">Nom </label>
-         <input type="text" name="name" value="<?= $name  ?>"/>
     </form>
 
   </div>

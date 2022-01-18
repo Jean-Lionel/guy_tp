@@ -70,7 +70,7 @@ include "include/header.php";
           <option value="<?= $classe['id'] ?>"> 
         
           <?php 
-            $dep = selectById('faculte',$classe['faculte_id']);
+            $dep = selectById('faculte',$classe['departement_id']);
 
             echo($dep['name'] .' | '. $classe['name']);
            ?>
@@ -84,7 +84,7 @@ include "include/header.php";
         <?php foreach($classes as $val): ?>
           <option value="<?= $val['id'] ?>" <?php if(isset($classe_id_value) and $classe_id_value == $val['id']) :?> selected  <?php endif ?>> 
             <?php 
-           $fac_id = getEntryInTable($classes, $val['classe_id'] ?? 0)['departement_id'];
+           $fac_id = getEntryInTable($classes, $val['classe_id'] ?? 0)['faculte_id'];
             echo getEntryInTable($facultes, $fac_id)['name'];
            ?> | 
             <?= $val['name'] ?>
