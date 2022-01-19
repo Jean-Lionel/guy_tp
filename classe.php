@@ -72,7 +72,7 @@ $classes = selectAll("classe");
   </form>
 
   <div>
-    <h5>Liste des Facultés</h5>
+    <h5>Classes</h5>
     <table>
       <thead>
         <tr>

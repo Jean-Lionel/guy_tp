@@ -102,7 +102,7 @@ include "include/header.php";
   </form>
 
   <div>
-    <h5>Liste des Facultés</h5>
+    <h5>PROFESSORS</h5>
     <table>
       <thead>
         <tr>
@@ -130,14 +130,7 @@ include "include/header.php";
              ?>
             
           </td>
-          <td>
-            <?php 
-            $fac_id = $cl['faculte_id'] ?? 0;
-
-             $fac = selectById('faculte', $fac_id);
-             echo($fac['name'] ?? '');
-           ?>
-           </td>
+         <td><?= getEntryInTable($facultes, $value['departement_id'])['name'] ?></td>
            
           <td>
             <a class="btn btn-outline-info" href="professeur.php?action=modifier&&id=<?= $value['id'] ?>">Modifier</a>
